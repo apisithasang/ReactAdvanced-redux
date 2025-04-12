@@ -88,10 +88,6 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
          
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
             </Grid>
             <Button
               type="submit"
