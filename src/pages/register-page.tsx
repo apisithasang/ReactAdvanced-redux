@@ -2,8 +2,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -56,18 +54,28 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   autoComplete="given-name"
-                  name="fullName"
+                  name="firstName"
                   required
                   fullWidth
-                  id="fullName"
-                  label="Full Name"
+                  id="firstName"
+                  label="First Name"
                   autoFocus
                 />
-
-    
+              </Grid>
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="family-name"
+                />
+              </Grid>
+      
                 <TextField
                   required
                   fullWidth
@@ -76,8 +84,8 @@ export default function SignUp() {
                   name="email"
                   autoComplete="email"
                 />
-  
-
+           
+     
                 <TextField
                   required
                   fullWidth
@@ -87,7 +95,8 @@ export default function SignUp() {
                   id="password"
                   autoComplete="new-password"
                 />
-         
+          
+             
             </Grid>
             <Button
               type="submit"
@@ -98,11 +107,11 @@ export default function SignUp() {
               ลงทะเบียน
             </Button>
             <Grid container justifyContent="flex-end">
-  
+              <Grid>
                 <Link href="#" variant="body2">
                   Already have an account? Log In
                 </Link>
-       
+              </Grid>
             </Grid>
           </Box>
         </Box>
