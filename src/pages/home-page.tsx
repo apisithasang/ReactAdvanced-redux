@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system'; // ใส่ไว้ด้านบนสุดด้วย
 
+import { Link as RouterLink } from "react-router-dom"
 
 function Copyright() {
   return (
@@ -58,7 +59,7 @@ export default function HomePage() {
               <Button variant="contained" color="primary">
                เข้าระบบ
               </Button>
-              <Button variant="outlined" color="primary">
+              <Button variant="outlined" color="primary" component={RouterLink} to="/register">
                 ลงทะเบียน
               </Button>
             </Box>
