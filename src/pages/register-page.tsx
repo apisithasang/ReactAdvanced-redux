@@ -9,6 +9,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import * as yup from "yup"
+import YupPassword from 'yup-password'
+YupPassword(yup) // extend yup
 import { Link as RouterLink } from "react-router-dom"
 
 function Copyright() {
@@ -24,7 +29,19 @@ function Copyright() {
   );
 }
 
-export default function SignUp() {
+export default function RegitsterPage() {
+    const schema = yup.object({
+        fistName: yup.string().required("ป้อนข้อมูลชื่อด้วย"),
+        lastName: yup.string().required("ป้อนข้อมูลนามสกุลด้วย"),
+        email: yup.string().required("ป้อนอีเมลด้วย").email("รูปแบบอีเมลไม่ถูกต้อง"),
+        password: yup.string().required("ป้อนรหัสผ่านด้วย")
+        .min(6, "รหัสผ่านต้องอย่างน้อย 6 ตัวอักษรขึ้นไป")
+        .minSymbols(1,"ต้องมีอักขระพิเศษอย่างน้อย 1 ตัวขึ้นไป")
+        .minUppercase(1,"ต้องมีตัวพิมพ์ใหญ่อย่างน้อย 1 ตัวขึ้นไป"),
+    });
+
+    type FormData = yup.InferType<typeof schema>
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
