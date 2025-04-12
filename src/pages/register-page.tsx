@@ -9,6 +9,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
+import { Link as RouterLink } from "react-router-dom"
+
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -106,10 +108,15 @@ export default function SignUp() {
             >
               ลงทะเบียน
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="center" spacing={3}>
               <Grid>
-                <Link href="#" variant="body2">
-                  Already have an account? Log In
+                <Link component={RouterLink} to="/" variant="body2">
+                    กลับหน้าหลัก
+                </Link>
+              </Grid>
+              <Grid>
+                <Link component={RouterLink} to="/" variant="body2">
+                  ถ้าลงทะเบียนแล้ว ไปที่หน้า Log In
                 </Link>
               </Grid>
             </Grid>
