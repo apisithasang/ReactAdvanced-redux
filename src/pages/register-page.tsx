@@ -42,16 +42,11 @@ export default function RegitsterPage() {
 
     type FormData = yup.InferType<typeof schema>
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    const { register, handleSubmit, formState:{ errors } } = useForm({
+        resolver: yupResolver(schema),
+        mode: "all"
+      });
+    const onSubmit = (data: FormData) => console.log(data);
 
   return (
 
@@ -71,48 +66,47 @@ export default function RegitsterPage() {
           <Typography component="h1" variant="h5">
             ลงทะเบียนผู้ใช้ใหม่
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Box component="form" 
+                noValidate 
+                onSubmit={handleSubmit(onSubmit)} 
+                sx={{ mt: 3 }}
+            >
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
+                  {...register('fistName')}
+                  error={errors.fistName ? true :false}
+                  helperText={errors.fistName && errors.fistName.message}
                   fullWidth
-                  id="firstName"
                   label="First Name"
                   autoFocus
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
-                  required
+                  {...register('lastName')}
+                  error={errors.lastName ? true :false}
+                  helperText={errors.lastName && errors.lastName.message}
                   fullWidth
-                  id="lastName"
                   label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
                 />
               </Grid>
       
                 <TextField
-                  required
+                  {...register('email')}
+                  error={errors.email ? true :false}
+                  helperText={errors.email && errors.email.message}
                   fullWidth
-                  id="email"
                   label="Email Address"
-                  name="email"
-                  autoComplete="email"
                 />
            
-     
                 <TextField
-                  required
+                  {...register('password')}
+                  error={errors.password ? true :false}
+                  helperText={errors.password && errors.password.message}
                   fullWidth
-                  name="password"
                   label="Password"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
                 />
           
              
