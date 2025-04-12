@@ -53,17 +53,13 @@ export default function HomePage() {
             >
               ระบบลาออนไลน์
             </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
-            </Typography>
+           
             <Box sx={{ pt: 4 }} display="flex" justifyContent="center" gap={2}>
               <Button variant="contained" color="primary">
-                Main call to action
+               เข้าระบบ
               </Button>
               <Button variant="outlined" color="primary">
-                Secondary action
+                ลงทะเบียน
               </Button>
             </Box>
           </Container>
